@@ -17,8 +17,10 @@ func main() {
 	for {
 		switch v := psc.Receive().(type) {
 		case redis.Message:
+			fmt.Println("Message")
 			fmt.Printf("%s: message: %s\n", v.Channel, v.Data)
 		case redis.Subscription:
+			fmt.Println("Subscription")
 			fmt.Printf("%s: %s %d\n", v.Channel, v.Kind, v.Count)
 		case error:
 			fmt.Println(v)
